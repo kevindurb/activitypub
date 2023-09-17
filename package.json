@@ -5,7 +5,15 @@
   "main": "dist/index.js",
   "type": "module",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "start": "concurrently npm:build:watch npm:nodemon",
+    "nodemon": "nodemon ./dist/index.js",
+    "build": "tsc",
+    "build:watch": "npm run build -- --watch --preserveWatchOutput",
+    "start:database": "docker-compose up -d database",
+    "prepare": "husky install"
+  },
+  "lint-staged": {
+    "*.ts": "eslint --fix"
   },
   "repository": {
     "type": "git",
@@ -19,6 +27,8 @@
   },
   "homepage": "https://github.com/kevindurb/activitypub#readme",
   "devDependencies": {
+    "@commitlint/cli": "^17.7.1",
+    "@commitlint/config-conventional": "^17.7.0",
     "@commitlint/types": "^17.4.4",
     "@pgtyped/cli": "^2.2.1",
     "@tsconfig/node18": "^18.2.1",
@@ -43,6 +53,8 @@
     "typescript": "^5.2.2"
   },
   "dependencies": {
+    "@mikro-orm/core": "^5.8.1",
+    "@mikro-orm/postgresql": "^5.8.1",
     "@pgtyped/runtime": "^2.1.0",
     "body-parser": "^1.20.2",
     "class-transformer": "^0.5.1",
