@@ -1,0 +1,38 @@
+{
+  "extends": [
+    "eslint:recommended",
+    "plugin:@typescript-eslint/recommended",
+    "prettier"
+  ],
+  "parser": "@typescript-eslint/parser",
+  "plugins": [
+    "@typescript-eslint",
+    "simple-import-sort",
+    "sort-class-members",
+    "prettier"
+  ],
+  "root": true,
+  "rules": {
+    "prettier/prettier": "error",
+    "simple-import-sort/imports": "error",
+    "simple-import-sort/exports": "error",
+    "sort-class-members/sort-class-members": [
+      "error",
+      {
+        "order": [
+          "[properties]",
+          "[static-properties]",
+          "[conventional-private-properties]",
+          "constructor",
+          "[static-methods]",
+          "[arrow-function-properties]",
+          "[methods]",
+          "[conventional-private-methods]"
+        ],
+        "accessorPairPositioning": "getThenSet"
+      }
+    ],
+    "@typescript-eslint/explicit-member-accessibility": "error"
+  },
+  "settings": {}
+}

@@ -2,7 +2,8 @@
   "name": "@kevindurb/activitypub",
   "version": "1.0.0",
   "description": "",
-  "main": "index.js",
+  "main": "dist/index.js",
+  "type": "module",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
@@ -16,5 +17,43 @@
   "bugs": {
     "url": "https://github.com/kevindurb/activitypub/issues"
   },
-  "homepage": "https://github.com/kevindurb/activitypub#readme"
+  "homepage": "https://github.com/kevindurb/activitypub#readme",
+  "devDependencies": {
+    "@commitlint/types": "^17.4.4",
+    "@pgtyped/cli": "^2.2.1",
+    "@tsconfig/node18": "^18.2.1",
+    "@types/body-parser": "^1.19.2",
+    "@types/express": "^4.17.17",
+    "@types/multer": "^1.4.7",
+    "@types/node": "^18.17.12",
+    "@types/pg": "^8.10.2",
+    "@typescript-eslint/eslint-plugin": "^6.5.0",
+    "@typescript-eslint/parser": "^6.5.0",
+    "concurrently": "^8.2.1",
+    "eslint": "^8.48.0",
+    "eslint-config-prettier": "^9.0.0",
+    "eslint-plugin-prettier": "^5.0.0",
+    "eslint-plugin-simple-import-sort": "^10.0.0",
+    "eslint-plugin-sort-class-members": "^1.18.0",
+    "husky": "^8.0.3",
+    "lint-staged": "^14.0.1",
+    "nodemon": "^3.0.1",
+    "prettier-eslint": "^15.0.1",
+    "ts-node": "^10.9.1",
+    "typescript": "^5.2.2"
+  },
+  "dependencies": {
+    "@pgtyped/runtime": "^2.1.0",
+    "body-parser": "^1.20.2",
+    "class-transformer": "^0.5.1",
+    "class-validator": "^0.14.0",
+    "dotenv": "^16.3.1",
+    "express": "^4.18.2",
+    "multer": "^1.4.5-lts.1",
+    "node-pg-migrate": "^6.2.2",
+    "pg": "^8.11.3",
+    "reflect-metadata": "^0.1.13",
+    "routing-controllers": "^0.10.4",
+    "typedi": "^0.10.0"
+  }
 }
