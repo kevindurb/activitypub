@@ -3,6 +3,7 @@ import { EntityManager } from '@mikro-orm/postgresql';
 import bodyParser from 'body-parser';
 import express from 'express';
 import { inject, injectable } from 'inversify';
+import morgan from 'morgan';
 import { useExpressServer } from 'routing-controllers';
 
 import { InboxController } from './controllers/InboxController.js';
@@ -16,6 +17,7 @@ export class Server {
 
   public constructor() {
     this.express = express();
+    this.express.use(morgan('combined'));
     this.express.use(bodyParser.urlencoded({ extended: true }));
     this.express.use(bodyParser.json());
     this.express.use((req, res, next) => {
