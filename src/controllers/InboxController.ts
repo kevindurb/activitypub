@@ -2,8 +2,8 @@ import { injectable } from 'inversify';
 import { JsonController, Post } from 'routing-controllers';
 
 @injectable()
-@JsonController('/inbox')
+@JsonController()
 export class InboxController {
-  @Post('/')
+  @Post('/:userId/inbox')
   public post() {}
 }

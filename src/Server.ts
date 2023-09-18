@@ -6,6 +6,7 @@ import { inject, injectable } from 'inversify';
 import { useExpressServer } from 'routing-controllers';
 
 import { InboxController } from './controllers/InboxController.js';
+import { WebFingerController } from './controllers/WebFingerController.js';
 import * as types from './types.js';
 
 @injectable()
@@ -22,7 +23,7 @@ export class Server {
     });
 
     useExpressServer(this.express, {
-      controllers: [InboxController],
+      controllers: [InboxController, WebFingerController],
     });
   }
 
