@@ -33,11 +33,11 @@ export type ASQuestionActivity =
 
 export interface ASAnyOfQuestionActivity extends ASBaseIntransitiveActivity {
   type: 'Question';
-  closed: ASGenericObject | ASLink | string | boolean;
-  anyOf: Array<ASGenericObject>;
+  closed?: ASGenericObject | ASLink | string | boolean;
+  anyOf?: Array<ASGenericObject>;
 }
 export interface ASOneOfQuestionActivity extends ASBaseIntransitiveActivity {
   type: 'Question';
-  closed: ASGenericObject | ASLink | string | boolean;
-  oneOf: Array<ASGenericObject>;
+  closed?: ASGenericObject | ASLink | string | boolean;
+  oneOf?: Array<ASGenericObject>;
 }

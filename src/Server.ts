@@ -6,7 +6,12 @@ import { inject, injectable } from 'inversify';
 import morgan from 'morgan';
 import { useExpressServer } from 'routing-controllers';
 
+import { ActivityController } from './controllers/ActivityController.js';
+import { ActorController } from './controllers/ActorController.js';
+import { FollowersController } from './controllers/FollowersController.js';
 import { InboxController } from './controllers/InboxController.js';
+import { ObjectController } from './controllers/ObjectController.js';
+import { OutboxController } from './controllers/OutboxController.js';
 import { WebFingerController } from './controllers/WebFingerController.js';
 import * as types from './types.js';
 
@@ -25,7 +30,15 @@ export class Server {
     });
 
     useExpressServer(this.express, {
-      controllers: [InboxController, WebFingerController],
+      controllers: [
+        ActivityController,
+        ActorController,
+        FollowersController,
+        InboxController,
+        ObjectController,
+        OutboxController,
+        WebFingerController,
+      ],
     });
   }
 
