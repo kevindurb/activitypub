@@ -1,14 +1,22 @@
 import { ASObject } from './Object.js';
 
-export class ASLink {
-  public type = 'Link' as const;
+export interface ASBaseLink {
+  href?: string;
+  rel?: string;
+  mediaType?: string;
+  name?: string;
+  hreflang?: string;
+  height?: string;
+  width?: string;
+  preview?: ASLink | ASObject;
+}
 
-  public href?: string;
-  public rel?: string;
-  public mediaType?: string;
-  public name?: string;
-  public hreflang?: string;
-  public height?: string;
-  public width?: string;
-  public preview?: ASLink | ASObject;
+export type ASLink = ASGenericLink | ASMention;
+
+export interface ASGenericLink extends ASBaseLink {
+  type: 'Link';
+}
+
+export interface ASMention extends ASBaseLink {
+  type: 'Mention';
 }

@@ -1,4 +1,4 @@
-import { BaseObject } from './BaseObject.js';
+import { ASBaseObject } from './Object.js';
 
 export type ASActor =
   | ASActorApplication
@@ -7,22 +7,22 @@ export type ASActor =
   | ASActorPerson
   | ASActorService;
 
-export class ASActorApplication extends BaseObject {
-  public type = 'Application' as const;
+export interface ASActorApplication extends ASBaseObject {
+  type: 'Application';
 }
 
-export class ASActorGroup extends BaseObject {
-  public type = 'Group' as const;
+export interface ASActorGroup extends ASBaseObject {
+  type: 'Group';
 }
 
-export class ASActorOrganization extends BaseObject {
-  public type = 'Organization' as const;
+export interface ASActorOrganization extends ASBaseObject {
+  type: 'Organization';
 }
 
-export class ASActorPerson extends BaseObject {
-  public type = 'Person' as const;
+export interface ASActorPerson extends ASBaseObject {
+  type: 'Person';
 }
 
-export class ASActorService extends BaseObject {
-  public type = 'Service' as const;
+export interface ASActorService extends ASBaseObject {
+  type: 'Service';
 }
