@@ -9,6 +9,7 @@ import { ASOrderedCollection } from './OrderedCollection.js';
 import { ASOrderedCollectionPage } from './OrderedCollectionPage.js';
 
 export interface ASBaseObject {
+  id?: string;
   type: ASObjectTypes;
   attachment?: ASObject;
   attributedTo?: ASObject;
