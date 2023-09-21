@@ -6,8 +6,8 @@
   "tables": [
     {
       "columns": {
-        "user_id": {
-          "name": "user_id",
+        "_username": {
+          "name": "_username",
           "type": "varchar(255)",
           "unsigned": false,
           "autoincrement": false,
@@ -16,13 +16,13 @@
           "mappedType": "string"
         }
       },
-      "name": "user",
+      "name": "actors",
       "schema": "public",
       "indexes": [
         {
-          "keyName": "user_pkey",
+          "keyName": "actors_pkey",
           "columnNames": [
-            "user_id"
+            "_username"
           ],
           "composite": false,
           "primary": true,

@@ -8,7 +8,7 @@ import {
   QueryParam,
 } from 'routing-controllers';
 
-import { User } from '../entities/User.js';
+import { ActorEntity } from '../entities/ActorEntity.js';
 import * as types from '../types.js';
 
 @injectable()
@@ -25,15 +25,15 @@ export class WebFingerController {
     if (!isEmail(resourceUrl.pathname))
       throw new BadRequestError('Account must be formatted as valid email');
 
-    const [userId] = resourceUrl.pathname.split('@');
-    const user = await this.em.findOne(User, { userId });
+    const [username] = resourceUrl.pathname.split('@');
+    const actor = await this.em.findOne(ActorEntity, { _username: username });
 
-    if (!user) return;
+    if (!actor) return;
 
     return {
-      subject: `acct:${user.userId}`,
-      aliases: user.getUserAliases(),
-      links: user.getUserLinks(),
+      subject: `acct:${actor.id}`,
+      aliases: actor.id,
+      links: actor.id,
     };
   }
 }
