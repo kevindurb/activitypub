@@ -1,9 +1,9 @@
 import { Options } from '@mikro-orm/postgresql';
 
-import { User } from './entities/User.js';
+import { entities } from './entities/entities.js';
 
 export const config: Options = {
-  entities: [User],
+  entities,
   dbName: 'postgres',
   port: 55432,
   password: 'password',
