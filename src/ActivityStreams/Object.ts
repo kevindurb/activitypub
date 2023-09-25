@@ -21,29 +21,29 @@ export class ASBaseObject {
   @IsIn(objectTypes)
   public type!: ASObjectTypes;
   public attachment?: ASObject;
-  public attributedTo?: ASObject;
-  public audience?: ASObject;
+  public attributedTo?: ASObject | ASLink;
+  public audience?: ASObject | ASLink;
   public content?: string;
-  public context?: ASObject;
+  public context?: ASObject | ASLink;
   public name?: string;
   public endTime?: string;
-  public generator?: ASObject;
+  public generator?: ASObject | ASLink;
   public icon?: ASImage | ASLink;
   public image?: ASImage;
-  public inReplyTo?: ASObject;
-  public location?: ASObject;
-  public preview?: ASObject;
+  public inReplyTo?: ASObject | ASLink;
+  public location?: ASObject | ASLink;
+  public preview?: ASObject | ASLink;
   public published?: string;
   public replies?: ASCollection | ASOrderedCollection;
   public startTime?: string;
   public summary?: string;
-  public tag?: ASObject;
+  public tag?: ASObject | ASLink;
   public updated?: string;
   public url?: string | ASLink;
-  public to?: ASObject;
-  public bto?: ASObject;
-  public cc?: ASObject;
-  public bcc?: ASObject;
+  public to?: ASObject | ASLink;
+  public bto?: ASObject | ASLink;
+  public cc?: ASObject | ASLink;
+  public bcc?: ASObject | ASLink;
   public mediaType?: string;
   public duration?: string;
 }
@@ -51,7 +51,6 @@ export class ASBaseObject {
 export type ASObject =
   | ASGenericObject
   | ASActor
-  | ASLink
   | ASActivity
   | ASIntransitiveActivity
   | ASCollectionPage

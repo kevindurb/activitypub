@@ -11,7 +11,7 @@ export class ASBaseLink {
   public preview?: ASLink | ASObject;
 }
 
-export type ASLink = ASGenericLink | ASMention;
+export type ASLink = string | ASGenericLink | ASMention;
 
 export class ASGenericLink extends ASBaseLink {
   public type = 'Link' as const;

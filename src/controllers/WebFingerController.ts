@@ -26,16 +26,9 @@ export class WebFingerController {
       throw new BadRequestError('Account must be formatted as valid email');
 
     const [id] = resourceUrl.pathname.split('@');
-    const actor = await this.em.findOne(ObjectEntity, {
-      id,
-      properties: {
-        type: {
-          $in: ['Application', 'Group', 'Organization', 'Person', 'Service'],
-        },
-      },
-    });
+    const actor = await this.em.findOne(ObjectEntity, { id });
 
-    if (!actor) return;
+    if (!actor?.isActorType()) return;
 
     return {
       subject: `acct:${resourceUrl.pathname}`,

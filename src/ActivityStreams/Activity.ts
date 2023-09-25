@@ -33,16 +33,21 @@ export const activityTypes = [
 export type ASActivityTypes = (typeof activityTypes)[number];
 
 export const objectIsActivity = (object: ASObject): object is ASActivity =>
+  typeof object !== 'string' &&
   activityTypes.includes(object.type as ASActivityTypes);
 
 export class ASBaseActivity extends ASBaseObject {
   public declare type: ASActivityTypes;
-  public actor?: ASActor | ASLink;
-  public object?: ASObject;
-  public target?: ASObject | ASLink;
-  public result?: ASObject | ASLink;
-  public origin?: ASObject | ASLink;
-  public instrument?: ASObject | ASLink;
+  public constructor(
+    public actor?: ASActor | ASLink,
+    public object?: ASObject | ASLink,
+    public target?: ASObject | ASLink,
+    public result?: ASObject | ASLink,
+    public origin?: ASObject | ASLink,
+    public instrument?: ASObject | ASLink,
+  ) {
+    super();
+  }
 }
 
 export type ASActivity =
