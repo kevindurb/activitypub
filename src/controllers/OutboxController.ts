@@ -34,6 +34,10 @@ export class OutboxController {
     const actor = await this.em.findOne(ObjectEntity, { id: actorId });
     if (!actor?.isActorType()) throw new NotFoundError();
 
+    // TODO: flatten object structure
+    // TODO: actually send out activities
+    // TODO: actually do things related to the activity type
+
     const instance = transformToClass(body);
     delete instance.id;
     const objectEntity = new ObjectEntity();
@@ -75,6 +79,7 @@ export class OutboxController {
           type: activityTypes,
         },
       })
+      .orderBy([{ column: 'createdAt', order: 'desc' }])
       .execute();
 
     return {
