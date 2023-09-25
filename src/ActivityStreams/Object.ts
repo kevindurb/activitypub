@@ -1,42 +1,51 @@
+import { IsIn } from 'class-validator';
+import { v4 } from 'uuid';
+
 import { ASActivity } from './Activity.js';
 import { ASActor } from './Actor.js';
 import { ASCollection } from './Collection.js';
 import { ASCollectionPage } from './CollectionPage.js';
 import { ASIntransitiveActivity } from './IntransitiveActivity.js';
 import { ASLink } from './Link.js';
-import { ASObjectTypes } from './ObjectTypes.js';
+import { ASObjectTypes, objectTypes } from './ObjectTypes.js';
 import { ASOrderedCollection } from './OrderedCollection.js';
 import { ASOrderedCollectionPage } from './OrderedCollectionPage.js';
 
-export interface ASBaseObject {
-  id?: string;
-  type: ASObjectTypes;
-  attachment?: ASObject;
-  attributedTo?: ASObject;
-  audience?: ASObject;
-  content?: string;
-  context?: ASObject;
-  name?: string;
-  endTime?: string;
-  generator?: ASObject;
-  icon?: ASImage | ASLink;
-  image?: ASImage;
-  inReplyTo?: ASObject;
-  location?: ASObject;
-  preview?: ASObject;
-  published?: string;
-  replies?: ASCollection | ASOrderedCollection;
-  startTime?: string;
-  summary?: string;
-  tag?: ASObject;
-  updated?: string;
-  url?: string | ASLink;
-  to?: ASObject;
-  bto?: ASObject;
-  cc?: ASObject;
-  bcc?: ASObject;
-  mediaType?: string;
-  duration?: string;
+export class AnyASObject {
+  @IsIn(objectTypes)
+  public type!: ASObjectTypes;
+}
+
+export class ASBaseObject {
+  public id?: string = v4();
+  @IsIn(objectTypes)
+  public type!: ASObjectTypes;
+  public attachment?: ASObject;
+  public attributedTo?: ASObject;
+  public audience?: ASObject;
+  public content?: string;
+  public context?: ASObject;
+  public name?: string;
+  public endTime?: string;
+  public generator?: ASObject;
+  public icon?: ASImage | ASLink;
+  public image?: ASImage;
+  public inReplyTo?: ASObject;
+  public location?: ASObject;
+  public preview?: ASObject;
+  public published?: string;
+  public replies?: ASCollection | ASOrderedCollection;
+  public startTime?: string;
+  public summary?: string;
+  public tag?: ASObject;
+  public updated?: string;
+  public url?: string | ASLink;
+  public to?: ASObject;
+  public bto?: ASObject;
+  public cc?: ASObject;
+  public bcc?: ASObject;
+  public mediaType?: string;
+  public duration?: string;
 }
 
 export type ASObject =
@@ -62,54 +71,54 @@ export type ASObject =
   | ASTombstone
   | ASVideo;
 
-export interface ASGenericObject extends ASBaseObject {
-  type: 'Object';
+export class ASGenericObject extends ASBaseObject {
+  public type = 'Object' as const;
 }
-export interface ASArticle extends ASBaseObject {
-  type: 'Article';
+export class ASArticle extends ASBaseObject {
+  public type = 'Article' as const;
 }
-export interface ASAudio extends ASBaseObject {
-  type: 'Audio';
+export class ASAudio extends ASBaseObject {
+  public type = 'Audio' as const;
 }
-export interface ASDocument extends ASBaseObject {
-  type: 'Document';
+export class ASDocument extends ASBaseObject {
+  public type = 'Document' as const;
 }
-export interface ASEvent extends ASBaseObject {
-  type: 'Event';
+export class ASEvent extends ASBaseObject {
+  public type = 'Event' as const;
 }
-export interface ASImage extends ASBaseObject {
-  type: 'Image';
+export class ASImage extends ASBaseObject {
+  public type = 'Image' as const;
 }
-export interface ASNote extends ASBaseObject {
-  type: 'Note';
+export class ASNote extends ASBaseObject {
+  public type = 'Note' as const;
 }
-export interface ASPage extends ASBaseObject {
-  type: 'Page';
+export class ASPage extends ASBaseObject {
+  public type = 'Page' as const;
 }
-export interface ASPlace extends ASBaseObject {
-  type: 'Place';
-  accuracy?: number;
-  altitude?: number;
-  latitude?: number;
-  longitude?: number;
-  radius?: number;
-  units?: string;
+export class ASPlace extends ASBaseObject {
+  public type = 'Place' as const;
+  public accuracy?: number;
+  public altitude?: number;
+  public latitude?: number;
+  public longitude?: number;
+  public radius?: number;
+  public units?: string;
 }
-export interface ASProfile extends ASBaseObject {
-  type: 'Profile';
-  describes?: ASObject;
+export class ASProfile extends ASBaseObject {
+  public type = 'Profile' as const;
+  public describes?: ASObject;
 }
-export interface ASRelationship extends ASBaseObject {
-  type: 'Relationship';
-  subject?: ASObject;
-  object?: ASObject;
-  relationship?: string;
+export class ASRelationship extends ASBaseObject {
+  public type = 'Relationship' as const;
+  public subject?: ASObject;
+  public object?: ASObject;
+  public relationship?: string;
 }
-export interface ASTombstone extends ASBaseObject {
-  type: 'Tombstone';
-  formerType?: string;
-  deleted?: string;
+export class ASTombstone extends ASBaseObject {
+  public type = 'Tombstone' as const;
+  public formerType?: ASObjectTypes;
+  public deleted?: string;
 }
-export interface ASVideo extends ASBaseObject {
-  type: 'Video';
+export class ASVideo extends ASBaseObject {
+  public type = 'Video' as const;
 }

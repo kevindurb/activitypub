@@ -2,13 +2,47 @@ import { ASActor } from './Actor.js';
 import { ASLink } from './Link.js';
 import { ASBaseObject, ASObject } from './Object.js';
 
-export interface ASBaseActivity extends ASBaseObject {
-  actor?: ASActor | ASLink;
-  object?: ASObject;
-  target?: ASObject | ASLink;
-  result?: ASObject | ASLink;
-  origin?: ASObject | ASLink;
-  instrument?: ASObject | ASLink;
+export const activityTypes = [
+  'Activity',
+  'Accept',
+  'Add',
+  'Announce',
+  'Block',
+  'Create',
+  'Delete',
+  'Dislike',
+  'Flag',
+  'Follow',
+  'Ignore',
+  'Invite',
+  'Join',
+  'Leave',
+  'Like',
+  'Listen',
+  'Move',
+  'Offer',
+  'Reject',
+  'Read',
+  'Remove',
+  'TentativeReject',
+  'TentativeAccept',
+  'Undo',
+  'Update',
+  'View',
+] as const;
+export type ASActivityTypes = (typeof activityTypes)[number];
+
+export const objectIsActivity = (object: ASObject): object is ASActivity =>
+  activityTypes.includes(object.type as ASActivityTypes);
+
+export class ASBaseActivity extends ASBaseObject {
+  public declare type: ASActivityTypes;
+  public actor?: ASActor | ASLink;
+  public object?: ASObject;
+  public target?: ASObject | ASLink;
+  public result?: ASObject | ASLink;
+  public origin?: ASObject | ASLink;
+  public instrument?: ASObject | ASLink;
 }
 
 export type ASActivity =
@@ -39,81 +73,81 @@ export type ASActivity =
   | ASUpdateActivity
   | ASViewActivity;
 
-export interface ASGenericActivity extends ASBaseActivity {
-  type: 'Activity';
+export class ASGenericActivity extends ASBaseActivity {
+  public type = 'Activity' as const;
 }
-export interface ASAcceptActivity extends ASBaseActivity {
-  type: 'Accept';
+export class ASAcceptActivity extends ASBaseActivity {
+  public type = 'Accept' as const;
 }
-export interface ASAddActivity extends ASBaseActivity {
-  type: 'Add';
+export class ASAddActivity extends ASBaseActivity {
+  public type = 'Add' as const;
 }
-export interface ASAnnounceActivity extends ASBaseActivity {
-  type: 'Announce';
+export class ASAnnounceActivity extends ASBaseActivity {
+  public type = 'Announce' as const;
 }
-export interface ASBlockActivity extends ASBaseActivity {
-  type: 'Block';
+export class ASBlockActivity extends ASBaseActivity {
+  public type = 'Block' as const;
 }
-export interface ASCreateActivity extends ASBaseActivity {
-  type: 'Create';
+export class ASCreateActivity extends ASBaseActivity {
+  public type = 'Create' as const;
 }
-export interface ASDeleteActivity extends ASBaseActivity {
-  type: 'Delete';
+export class ASDeleteActivity extends ASBaseActivity {
+  public type = 'Delete' as const;
 }
-export interface ASDislikeActivity extends ASBaseActivity {
-  type: 'Dislike';
+export class ASDislikeActivity extends ASBaseActivity {
+  public type = 'Dislike' as const;
 }
-export interface ASFlagActivity extends ASBaseActivity {
-  type: 'Flag';
+export class ASFlagActivity extends ASBaseActivity {
+  public type = 'Flag' as const;
 }
-export interface ASFollowActivity extends ASBaseActivity {
-  type: 'Follow';
+export class ASFollowActivity extends ASBaseActivity {
+  public type = 'Follow' as const;
 }
-export interface ASIgnoreActivity extends ASBaseActivity {
-  type: 'Ignore';
+export class ASIgnoreActivity extends ASBaseActivity {
+  public type = 'Ignore' as const;
 }
-export interface ASInviteActivity extends ASBaseActivity {
-  type: 'Invite';
+export class ASInviteActivity extends ASBaseActivity {
+  public type = 'Invite' as const;
 }
-export interface ASJoinActivity extends ASBaseActivity {
-  type: 'Join';
+export class ASJoinActivity extends ASBaseActivity {
+  public type = 'Join' as const;
 }
-export interface ASLeaveActivity extends ASBaseActivity {
-  type: 'Leave';
+export class ASLeaveActivity extends ASBaseActivity {
+  public type = 'Leave' as const;
 }
-export interface ASLikeActivity extends ASBaseActivity {
-  type: 'Like';
+export class ASLikeActivity extends ASBaseActivity {
+  public type = 'Like' as const;
 }
-export interface ASListenActivity extends ASBaseActivity {
-  type: 'Listen';
+export class ASListenActivity extends ASBaseActivity {
+  public type = 'Listen' as const;
 }
-export interface ASMoveActivity extends ASBaseActivity {
-  type: 'Move';
+export class ASMoveActivity extends ASBaseActivity {
+  public type = 'Move' as const;
 }
-export interface ASOfferActivity extends ASBaseActivity {
-  type: 'Offer';
+export class ASOfferActivity extends ASBaseActivity {
+  public type = 'Offer' as const;
 }
-export interface ASRejectActivity extends ASBaseActivity {
-  type: 'Reject';
+export class ASRejectActivity extends ASBaseActivity {
+  public type = 'Reject' as const;
 }
-export interface ASReadActivity extends ASBaseActivity {
-  type: 'Read';
+export class ASReadActivity extends ASBaseActivity {
+  public type = 'Read' as const;
 }
-export interface ASRemoveActivity extends ASBaseActivity {
-  type: 'Remove';
+export class ASRemoveActivity extends ASBaseActivity {
+  public type = 'Remove' as const;
 }
-export interface ASTentativeRejectActivity extends ASBaseActivity {
-  type: 'TentativeReject';
+export class ASTentativeRejectActivity extends ASBaseActivity {
+  public type = 'TentativeReject' as const;
 }
-export interface ASTentativeAcceptActivity extends ASBaseActivity {
-  type: 'TentativeAccept';
+export class ASTentativeAcceptActivity extends ASBaseActivity {
+  public type = 'TentativeAccept' as const;
 }
-export interface ASUndoActivity extends ASBaseActivity {
-  type: 'Undo';
+export class ASUndoActivity extends ASBaseActivity {
+  public type = 'Undo' as const;
 }
-export interface ASUpdateActivity extends ASBaseActivity {
-  type: 'Update';
+export class ASUpdateActivity extends ASBaseActivity {
+  public type = 'Update' as const;
 }
-export interface ASViewActivity extends ASBaseActivity {
-  type: 'View';
+export class ASViewActivity extends ASBaseActivity {
+  public type = 'View' as const;
 }

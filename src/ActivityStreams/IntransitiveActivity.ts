@@ -2,12 +2,12 @@ import { ASActor } from './Actor.js';
 import { ASLink } from './Link.js';
 import { ASBaseObject, ASGenericObject, ASObject } from './Object.js';
 
-export interface ASBaseIntransitiveActivity extends ASBaseObject {
-  actor?: ASActor | ASLink;
-  target?: ASObject | ASLink;
-  result?: ASObject | ASLink;
-  origin?: ASObject | ASLink;
-  instrument?: ASObject | ASLink;
+export class ASBaseIntransitiveActivity extends ASBaseObject {
+  public actor?: ASActor | ASLink;
+  public target?: ASObject | ASLink;
+  public result?: ASObject | ASLink;
+  public origin?: ASObject | ASLink;
+  public instrument?: ASObject | ASLink;
 }
 
 export type ASIntransitiveActivity =
@@ -16,28 +16,27 @@ export type ASIntransitiveActivity =
   | ASTravelActivity
   | ASQuestionActivity;
 
-export interface ASGenericIntransitiveActivity
-  extends ASBaseIntransitiveActivity {
-  type: 'IntransitiveActivity';
+export class ASGenericIntransitiveActivity extends ASBaseIntransitiveActivity {
+  public type = 'IntransitiveActivity' as const;
 }
-export interface ASArriveActivity extends ASBaseIntransitiveActivity {
-  type: 'Arrive';
+export class ASArriveActivity extends ASBaseIntransitiveActivity {
+  public type = 'Arrive' as const;
 }
-export interface ASTravelActivity extends ASBaseIntransitiveActivity {
-  type: 'Travel';
+export class ASTravelActivity extends ASBaseIntransitiveActivity {
+  public type = 'Travel' as const;
 }
 
 export type ASQuestionActivity =
   | ASAnyOfQuestionActivity
   | ASOneOfQuestionActivity;
 
-export interface ASAnyOfQuestionActivity extends ASBaseIntransitiveActivity {
-  type: 'Question';
-  closed?: ASGenericObject | ASLink | string | boolean;
-  anyOf?: Array<ASGenericObject>;
+export class ASAnyOfQuestionActivity extends ASBaseIntransitiveActivity {
+  public type = 'Question' as const;
+  public closed?: ASGenericObject | ASLink | string | boolean;
+  public anyOf?: Array<ASGenericObject>;
 }
-export interface ASOneOfQuestionActivity extends ASBaseIntransitiveActivity {
-  type: 'Question';
-  closed?: ASGenericObject | ASLink | string | boolean;
-  oneOf?: Array<ASGenericObject>;
+export class ASOneOfQuestionActivity extends ASBaseIntransitiveActivity {
+  public type = 'Question' as const;
+  public closed?: ASGenericObject | ASLink | string | boolean;
+  public oneOf?: Array<ASGenericObject>;
 }

@@ -2,12 +2,12 @@ import { ASLink } from './Link.js';
 import { ASBaseObject, ASObject } from './Object.js';
 import { ASOrderedCollectionPage } from './OrderedCollectionPage.js';
 
-export interface ASOrderedCollection extends ASBaseObject {
-  type: 'OrderedCollection';
+export class ASOrderedCollection extends ASBaseObject {
+  public type = 'OrderedCollection' as const;
 
-  totalItems?: number;
-  current?: ASOrderedCollectionPage | ASLink;
-  first?: ASOrderedCollectionPage | ASLink;
-  last?: ASOrderedCollectionPage | ASLink;
-  orderedItems?: Array<ASObject | ASLink>;
+  public totalItems?: number;
+  public current?: ASOrderedCollectionPage | ASLink;
+  public first?: ASOrderedCollectionPage | ASLink;
+  public last?: ASOrderedCollectionPage | ASLink;
+  public orderedItems?: Array<ASObject | ASLink>;
 }

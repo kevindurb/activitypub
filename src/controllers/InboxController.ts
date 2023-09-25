@@ -1,8 +1,9 @@
 import { injectable } from 'inversify';
 import { Body, Get, JsonController, Post } from 'routing-controllers';
 
-import { ObjectValidator } from '../ActivityStreams/ObjectValidator.js';
+import { AnyASObject } from '../ActivityStreams/Object.js';
 import { ASOrderedCollection } from '../ActivityStreams/OrderedCollection.js';
+import { transformToClass } from '../ActivityStreams/transformer.js';
 
 /**
  * Actions from other actors to actor in params
@@ -11,8 +12,9 @@ import { ASOrderedCollection } from '../ActivityStreams/OrderedCollection.js';
 @JsonController('/:actorId/inbox')
 export class InboxController {
   @Post()
-  public post(@Body() body: ObjectValidator) {
-    console.log(body);
+  public post(@Body() body: AnyASObject) {
+    const instance = transformToClass(body);
+    console.log(instance);
   }
 
   @Get()

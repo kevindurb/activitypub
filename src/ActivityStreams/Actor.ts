@@ -7,22 +7,22 @@ export type ASActor =
   | ASActorPerson
   | ASActorService;
 
-export interface ASActorApplication extends ASBaseObject {
-  type: 'Application';
+export class ASActorApplication extends ASBaseObject {
+  public type = 'Application' as const;
 }
 
-export interface ASActorGroup extends ASBaseObject {
-  type: 'Group';
+export class ASActorGroup extends ASBaseObject {
+  public type = 'Group' as const;
 }
 
-export interface ASActorOrganization extends ASBaseObject {
-  type: 'Organization';
+export class ASActorOrganization extends ASBaseObject {
+  public type = 'Organization' as const;
 }
 
-export interface ASActorPerson extends ASBaseObject {
-  type: 'Person';
+export class ASActorPerson extends ASBaseObject {
+  public type = 'Person' as const;
 }
 
-export interface ASActorService extends ASBaseObject {
-  type: 'Service';
+export class ASActorService extends ASBaseObject {
+  public type = 'Service' as const;
 }

@@ -2,16 +2,16 @@ import { ASCollection } from './Collection.js';
 import { ASLink } from './Link.js';
 import { ASBaseObject, ASObject } from './Object.js';
 
-export interface ASCollectionPage extends ASBaseObject {
-  type: 'CollectionPage';
+export class ASCollectionPage extends ASBaseObject {
+  public type = 'CollectionPage' as const;
 
-  partOf?: ASCollection | ASLink;
-  next?: ASCollectionPage | ASLink;
-  previous?: ASCollectionPage | ASLink;
+  public partOf?: ASCollection | ASLink;
+  public next?: ASCollectionPage | ASLink;
+  public previous?: ASCollectionPage | ASLink;
 
-  totalItems?: number;
-  current?: ASCollectionPage | ASLink;
-  first?: ASCollectionPage | ASLink;
-  last?: ASCollectionPage | ASLink;
-  items?: Array<ASObject | ASLink>;
+  public totalItems?: number;
+  public current?: ASCollectionPage | ASLink;
+  public first?: ASCollectionPage | ASLink;
+  public last?: ASCollectionPage | ASLink;
+  public items?: Array<ASObject | ASLink>;
 }

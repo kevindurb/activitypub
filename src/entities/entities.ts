@@ -1,3 +1,3 @@
-import { ActorEntity } from './ActorEntity.js';
+import { ObjectEntity } from './ObjectEntity.js';
 
-export const entities = [ActorEntity];
+export const entities = [ObjectEntity];
