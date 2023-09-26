@@ -32,10 +32,6 @@ export const activityTypes = [
 ] as const;
 export type ASActivityTypes = (typeof activityTypes)[number];
 
-export const objectIsActivity = (object: ASObject): object is ASActivity =>
-  typeof object !== 'string' &&
-  activityTypes.includes(object.type as ASActivityTypes);
-
 export class ASBaseActivity extends ASBaseObject {
   public declare type: ASActivityTypes;
   public constructor(
